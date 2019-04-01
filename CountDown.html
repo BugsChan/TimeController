@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>关机倒计时</title>
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        main{
+            width: 100%;
+            height: 100%;
+            background:url(background.jpg);
+            background-size: 100% 100%;
+            position: relative;
+            z-index: -2;
+        }
+        main:before{
+            content:"";
+            display:table;
+        }
+        main h1{
+            position:relative;
+            font-family:'微软雅黑';
+            font-weight:lighter;
+            color:white;
+            text-align:center;
+            margin-top: 18%;
+            z-index: 300;
+        }
+        .hidder{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>你的电脑将于<span>15</span>秒后关机</h1>
+        <div class="hidder"></div>
+    </main>
+    <script type="module">
+        const winHeight = document.documentElement.clientHeight;
+        document.body.style.height = winHeight + "px";
+        setInterval(() => {
+            const obj = document.querySelector("h1 span");
+            let tmp = +obj.innerText - 1;
+            if(tmp < 10)
+                tmp = '0' + tmp;
+            obj.innerText = tmp;
+        },1000);
+    </script>
+</body>
+</html>
