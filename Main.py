@@ -96,7 +96,7 @@ class Infomation:
         self.monthUse += min
         self.yearUse += min
         self.totleUse += min
-        self.nowSeconds += min
+        self.nowMinutes += min
 
 def dayLoop():
     """
@@ -169,7 +169,7 @@ def start():
     import webbrowser
     webbrowser.open("http://127.0.0.1:8888/index.html")
     while(True):
-        time.sleep(60)
+        time.sleep(1)
         oneMinLoop()
 
 if __name__ == "__main__":
