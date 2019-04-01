@@ -169,7 +169,7 @@ def start():
     import webbrowser
     webbrowser.open("http://127.0.0.1:8888/index.html")
     while(True):
-        time.sleep(1)
+        time.sleep(60)
         oneMinLoop()
 
 if __name__ == "__main__":
