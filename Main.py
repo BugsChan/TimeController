@@ -158,8 +158,7 @@ def oneMinLoop():
         #关机
         import os
         if os.name.find('nt') >= 0:
-            pass
-            #os.system("shutdown -s -t 0")
+            os.system("shutdown -s -t 0")
         else:
             os.system("shutdown now")
         return
