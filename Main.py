@@ -18,7 +18,7 @@ class Infomation:
             #对当前时间的记录，用于校准
             nowTime = time.localtime(time.time())
             self.nowMinutes = nowTime.tm_hour * 60 + nowTime.tm_min
-            if self.restTime <= 0 and nowTime.tm_mday == self.day:
+            if self.restTime <= 0 and nowTime.tm_mday == self.day and nowTime.tm_mon == self.month:
                 import os
                 if os.name.find('nt') >= 0:
                     os.system("shutdown -s -t 0")
