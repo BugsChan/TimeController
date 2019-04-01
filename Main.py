@@ -90,6 +90,8 @@ class Infomation:
             restTime = 0
         if restTime < self.restTime:
             self.restTime = restTime
+        elif self.restTime < 0:
+            self.restTime = 0
 
     def timeAppend(self, min):
         self.dayUse += min
@@ -156,7 +158,8 @@ def oneMinLoop():
         #关机
         import os
         if os.name.find('nt') >= 0:
-            os.system("shutdown -s -t 0")
+            pass
+            #os.system("shutdown -s -t 0")
         else:
             os.system("shutdown now")
         return
