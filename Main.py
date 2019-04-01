@@ -15,6 +15,9 @@ class Infomation:
                     tmp = each.replace(" ", "").replace("\n", "")
                     tmp = tmp.split("=")
                     setattr(self, tmp[0], int(tmp[1]))
+            #对当前时间的记录，用于校准
+            nowTime = time.localtime(time.time())
+            self.nowMinutes = nowTime.tm_hour * 60 + nowTime.tm_min
         else:
             nowDate = time.localtime(time.time())
             self.year = nowDate.tm_year
@@ -69,10 +72,15 @@ class Infomation:
 
     def refreshRestTime(self):
         #该方法用于设置关机倒计时
-        # 将关机倒计时设置为“当前时间”到“自动关机时间”的间隔
+        # 将剩余时间(restTime)设置为“当前时间”到“自动关机时间”的间隔
         nowTime = time.localtime(time.time())
         hour = nowTime.tm_hour
         minute = nowTime.tm_min
+        # 校准时间
+        nowMinutes = hour * 60 + minute
+        if nowMinutes != self.nowMinutes:
+            self.restTime -= nowMinutes - self.nowMinutes
+            self.nowMinutes = nowMinutes
         restTime = (self.closeTimeHour - hour) * 60
         restTime += self.closeTimeMinute - minute
         #如果当日最长开机时间小于关机倒计时，则将关机倒计时设置为当日最长开机时间。
@@ -88,10 +96,7 @@ class Infomation:
         self.monthUse += min
         self.yearUse += min
         self.totleUse += min
-
-class Exit:
-    def exit(self):
-        pass
+        self.nowSeconds += min
 
 def dayLoop():
     """
