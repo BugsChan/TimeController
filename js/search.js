@@ -49,6 +49,8 @@ class Search{
             url += '/search?q=' + text;
         }else if(/www.google.com/.test(this.engine)){
             url += '/serach?q=' + text;
+        }else if(/www.sogo.com/.test(this.engine)){
+            url += '/web?query=' + text;
         }
         window.open(url, "_blank");
     }
