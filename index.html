@@ -3,168 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>使用记录</title>
-    <style type="text/css">
-        *{
-            margin: 0px;
-            padding: 0px;
-        }
-        main{
-            width: 100%;
-            height: 100%;
-            background:url(background.jpg);
-            background-size: 100% 100%;
-            position: relative;
-        }
-        .introductionImg{
-            position: absolute;
-            left: 12%;
-            bottom: 20%;
-            font-size: 12pt;
-            color: rgba(255, 255, 255, 0.6);
-        }
-        .introductionImg a{
-            font-size: 12pt;
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-        }
-        .introductionImg a:hover{
-            color: #fff;
-        }
-        .showTime{
-            width:80%;
-            height: 20%;
-            position: absolute;
-            top: 15%;
-            padding: 0px 10%;
-        }
-        .showTime *{
-            z-index: inherit;
-        }
-        .showTime div{
-            width: 18%;
-            height: 100%;
-            float:left;
-            font-size: 12pt;
-            color:#fff;
-            font-family:"微软雅黑";
-            font-weight:lighter;
-        }
-        #nowTime{
-            width: 24%;
-            padding-left: 4%;
-            font-size: 65pt;
-            overflow:hidden;
-            text-align:right;
-        }
-        .description{
-            height: 20%;
-        }
-        .data{
-            height: 60%;
-            margin-top: 16%;
-            font-size: 18pt;
-            color:rgb(255, 155, 45);
-        }
-        #dayUse .data{
-            height: 70%;
-            margin-top: 10%;
-            font-size: 30pt;
-            color: #fff;
-        }
-        #yearUse .data{
-            color:rgb(255, 50, 45);
-        }
-        #totleUse .data{
-            color:rgb(185, 50, 145);
-        }
-        .data sub{
-            font-size:12pt;
-        }
-        .Exit{
-            font-family:"微软雅黑";
-            position: absolute;
-            font-weight:lighter;
-            right: 7%;
-            bottom: 20%;
-            width: 20%;
-            color:white;
-        }
-        .Exit p{
-            height: 35pt;
-        }
-        input[type="number"]{
-            background-color:rgba(0,0,0,0.5);
-            border:none;
-            color:white;
-            width: 30pt;
-            height: 18pt;
-            font-size:13pt;
-            text-align: center;
-            border-bottom:solid 2px gray;
-        }
-        input[type="button"]{
-            width: 50pt;
-            height: 60%;
-        }
-        .defaultExit{
-            right: 40%;
-        }
-        .introductionImg .setting{
-            display:block;
-            width:18pt;
-            height:18pt;
-            float:right;
-        }
-        #bg-setting{
-            position:relative;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-        #bg-setting:before{
-            content:"";
-            display:table;
-        }
-        #bg-setting>.setting:before{
-            content:"";
-            display:table;
-        }
-        #bg-setting>.setting{
-            width: 40%;
-            background-color:white;
-            margin: 10% auto 0px auto;
-            height: 60%;
-            overflow:auto;
-            position: relative;
-        }
-        #bg-setting .Exit{
-            position: static;
-            width: 60%;
-            margin: 10% auto 0px auto;
-            color:black;
-        }
-        #bg-setting input[type="number"]{
-            background-color:white;
-            color:black;
-        }
-        .exitSetting{
-            position:absolute;
-            font-size: 30pt;
-            font-weight: bold;
-            right: 10pt;
-            top: 10pt;
-            cursor: pointer;
-        }
-        .hidder{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0px;
-            background-color: rgba(0, 0, 0, 0.6);
-            z-index: -2;
-            display:none;
-        }
-    </style>
+    <link rel="stylesheet" href="css/time.css">
+    <link rel="stylesheet" href="css/search.css">
 </head>
 <body>
     <main>
@@ -196,6 +36,10 @@
                 分钟</p>
             <p>后关机 &nbsp;&nbsp; <input type="button" data-description="当日使用时间" data-type="auto" value="调整" class="adjust"/></p>
         </div>
+        <p class="search">
+            <input type="text" class="search-input">
+            <input type="button" class="search-sure" value="搜索">
+        </p>
         <div id="bg-setting" style="display:none;">
             <div class="setting">
                 <p class="exitSetting">×</p>
@@ -218,6 +62,14 @@
                     </p>
                     <p><input type="button" data-description="自动关机时间" data-type="timeTo" value="调整" class="adjust"/></p>
                 </div>
+                <div class="search-setting Exit">
+                    <p>选择搜索引擎</p>
+                    <select id="search-option">
+                        <option data-url="https://www.baidu.com">百度</option>
+                        <option data-url="https://www.bing.com">必应</option>
+                        <option data-url="https://www.google.com">谷歌</option>
+                    </select>
+                </div>
             </div>
         </div>
         <p class="introductionImg">
@@ -225,7 +77,6 @@
             提供 &nbsp; &nbsp; &nbsp;
             <img class="setting" src="setting.jpg" alt="设置">
         </p>
-
         <div class="hidder"></div>
     </main>
     <script type="module">
@@ -358,6 +209,10 @@
         };
         blur_Register(".hour");
         blur_Register(".minute");
+
+
+        import {Search} from './js/search.js'
+        new Search();
     </script>
 </body>
 </html>

@@ -4,7 +4,8 @@ from threading import Thread
 import Main
 
 class  MServer(BaseHTTPRequestHandler):
-    types = {".html": "text/html", '.png': 'image/png', '.jpg':'image/jpeg', ".log": "text/plain"}
+    types = {".html": "text/html", '.png': 'image/png', '.jpg':'image/jpeg', ".log": "text/plain"
+             ,".css": "text/css", ".js": "text/javascript"}
     #get
     def do_GET(self):
         path = urlparse(self.path)

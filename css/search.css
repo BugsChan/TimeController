@@ -1,0 +1,29 @@
+.search{
+    padding: 0px 10%;
+    position: absolute;
+    top: 50%;
+}
+.search .search-input{
+    width: 190pt;
+    height: 25pt;/*
+    line-height: 25pt;*/
+    font-size: 12pt;
+    border: 0px;
+    float: left;
+    padding-left: 5pt;
+}
+.search .search-sure{
+    height: 25pt;
+    border: 0px;
+    background-color: gray;
+    color:white;
+    float: left;
+}
+.search .search-sure:hover{
+    background: #cacaca;
+    color:black;
+}
+
+#search-option{
+    margin-bottom: 40pt;
+}
