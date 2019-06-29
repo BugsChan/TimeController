@@ -43,7 +43,11 @@ class Search{
     }
     startSearch(text){
         let url = this.engine;
-        if(/www.baidu.com/.test(this.engine)){
+        if(/www\./.test(text)){
+            url = "http://" + text;
+        }else if(/http[s]?:/.test(text)){
+            url = text;
+        }else if(/www.baidu.com/.test(this.engine)){
             url += '/s?wd=' + text;
         }else if(/www.bing.com/.test(this.engine)){
             url += '/search?q=' + text;
