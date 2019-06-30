@@ -159,7 +159,7 @@ def oneMinLoop():
             return
         #打开关机倒计时
         import webbrowser
-        webbrowser.open("http://127.0.0.1:8888/CountDown.html")
+        webbrowser.open("http://127.0.0.1:5678/CountDown.html")
         time.sleep(15)
         #关机
         import os
@@ -175,7 +175,7 @@ def oneMinLoop():
 def start():
     dayLoop()
     import webbrowser
-    webbrowser.open("http://127.0.0.1:8888/index.html")
+    webbrowser.open("http://127.0.0.1:5678/index.html")
     while(True):
         time.sleep(60)
         oneMinLoop()

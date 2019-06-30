@@ -43,9 +43,9 @@ class Search{
     }
     startSearch(text){
         let url = this.engine;
-        if(/www\./.test(text)){
+        if(/^www\./.test(text)){
             url = "http://" + text;
-        }else if(/http[s]?:/.test(text)){
+        }else if(/^http[s]?:/.test(text)){
             url = text;
         }else if(/www.baidu.com/.test(this.engine)){
             url += '/s?wd=' + text;

@@ -82,7 +82,7 @@ class QueryHandler:
 if __name__ == "__main__":
     loopthread = Thread(target=Main.start)
     loopthread.start()
-    port = 8888
+    port = 5768
     server_address = ('', port)
     httpd = HTTPServer(server_address, MServer)
     httpd.serve_forever()
