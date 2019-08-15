@@ -30,6 +30,7 @@ class  MServer(BaseHTTPRequestHandler):
         self.send_header('Content-type', contentType)
         self.end_headers()
         self.wfile.write(content)
+        self.wfile.close()
 
     def handleQuery(self, path):
         tmp = path.query
@@ -45,6 +46,7 @@ class  MServer(BaseHTTPRequestHandler):
         self.send_header("Content-type", self.types[".log"])
         self.end_headers()
         self.wfile.write(content)
+        self.wfile.close()
 
 class QueryHandler:
     @staticmethod

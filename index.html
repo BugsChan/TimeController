@@ -81,6 +81,10 @@
         <div class="hidder"></div>
     </main>
     <script type="module">
+        //高度调节
+        const winHeight = document.documentElement.clientHeight;
+        document.body.style.height = winHeight + "px";
+
         //时间
         setInterval(() => {
             let nowTime = new Date();

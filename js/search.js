@@ -40,6 +40,7 @@ class Search{
                 this.startSearch(text);
             }
         };
+		document.querySelector(".search-input").focus();
     }
     startSearch(text){
         let url = this.engine;
