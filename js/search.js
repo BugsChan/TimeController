@@ -52,7 +52,7 @@ class Search{
         }else if(/www.bing.com/.test(this.engine)){
             url += '/search?q=' + text;
         }else if(/www.google.com/.test(this.engine)){
-            url += '/serach?q=' + text;
+            url += '/search?q=' + text;
         }else if(/www.sogo.com/.test(this.engine)){
             url += '/web?query=' + text;
         }

@@ -81,9 +81,6 @@
         <div class="hidder"></div>
     </main>
     <script type="module">
-        const winHeight = document.documentElement.clientHeight;
-        document.body.style.height = winHeight + "px";
-
         //时间
         setInterval(() => {
             let nowTime = new Date();
@@ -93,6 +90,10 @@
                 minutes = '0' + minutes;
             const nowTimeDOM = document.querySelector("#nowTime");
             nowTimeDOM.innerText = `${hours}:${minutes}`;
+
+            //高度调节
+            const winHeight = document.documentElement.clientHeight;
+            document.body.style.height = winHeight + "px";
         }, 1000);
 
         fetch("/?m=getLog").then((response) => {
@@ -214,6 +215,9 @@
 
         import {Search} from './js/search.js';
         new Search();
+
+        import {Quit} from './js/Quit.js';
+        new Quit();
     </script>
 </body>
 </html>
