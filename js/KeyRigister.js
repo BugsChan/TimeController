@@ -30,7 +30,7 @@ class KeyRigister{
         defaultExitObj.style.display = 'none';
     }
     key_73(evt){
-        if(!this.inSearch()){
+        if(!this.inSearch() && document.querySelector("#bg-setting").style.display == 'none'){
             let ele = document.querySelector(".search-input");
             ele.focus();
             setTimeout(() => {
