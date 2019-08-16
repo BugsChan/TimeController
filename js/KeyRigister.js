@@ -1,5 +1,5 @@
 
-class Quit{
+class KeyRigister{
     constructor(){
         window.addEventListener("keydown", (evt) => {
             try{
@@ -60,4 +60,4 @@ class Quit{
     }
 };
 
-export{Quit}
+export{KeyRigister}

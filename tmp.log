@@ -1,0 +1,16 @@
+#总时长(分钟)
+totleUse = 0
+#
+yearUse = 0
+monthUse = 0
+dayUse = 0
+
+year = 2019
+month = 8
+day = 15
+
+autoExitTime = 300
+restTime = 300
+
+closeTimeHour = 23
+closeTimeMinute = 55
