@@ -1,4 +1,4 @@
-#总时长(分钟)
+﻿#总时长(分钟)
 totleUse = 0
 #
 yearUse = 0
@@ -7,7 +7,7 @@ dayUse = 0
 
 year = 2019
 month = 8
-day = 15
+day = 16
 
 autoExitTime = 300
 restTime = 300

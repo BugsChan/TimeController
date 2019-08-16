@@ -57,7 +57,14 @@ class Search{
         }else if(/www.sogo.com/.test(this.engine)){
             url += '/web?query=' + text;
         }
-        window.open(url, "_blank");
+        let child = window.open(url, "_blank");
+        child.addEventListener("load", () => {
+            child.addEventListener("keydown", (evt) => {
+                if(evt.keyCode == 27){
+                    child.close();
+                }
+            });
+        });
     }
 }
 
