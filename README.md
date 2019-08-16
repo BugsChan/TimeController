@@ -7,6 +7,8 @@ Windows系统：
 Linux/Mac系统：
 	在启动项中加入 python3 Server.py
 
+***建议把timeController.html放在随时可以找到的地方，以便方便地进入设置页面***
+
 功能介绍：  
 
 这是一个B/S程序，使用 http://127.0.0.1:5768/index.html访问  
