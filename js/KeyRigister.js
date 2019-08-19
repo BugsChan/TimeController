@@ -35,6 +35,7 @@ class KeyRigister{
             ele.focus();
             setTimeout(() => {
                 ele.value = ele.value.slice(0, -1);
+                document.querySelector("#associate-dom").style.display = 'none';
             }, 100);
         }
     }
