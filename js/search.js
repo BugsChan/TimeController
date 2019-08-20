@@ -67,6 +67,9 @@ class Search{
 		    if(!ul || ul.style.display == "none")return;
 		    let span = ul.querySelector("li span");
 		    if(span)searchInput.value = span.innerText;
+		    for(let each of ul.childNodes){
+		        each.setAttribute("data-hover", "false");
+		    }
 		});
     }
     startSearch(text){
@@ -169,6 +172,7 @@ class Search{
                 dom.setAttribute("data-clear", "true");
                 for(let each of dom.childNodes){
                     each.style.backgroundColor = '#eee';
+                    each.setAttribute("data-hover", "false");
                 }
             });
             dom.addEventListener("click", (evt) => {
