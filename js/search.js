@@ -57,20 +57,20 @@ class Search{
             const target = evt.target || evt.srcElement;
             this.associate(target);
         });
-		searchInput.focus();
-		searchInput.addEventListener("blur", (evt) => {
-		    let dom = document.querySelector("#associate-dom");
-		    if(dom && dom.getAttribute("data-clear") != 'false')dom.style.display = "none";
-		});
-		searchInput.addEventListener("focus", () => {
-		    let ul = document.querySelector("#associate-dom");
-		    if(!ul || ul.style.display == "none")return;
-		    let span = ul.querySelector("li span");
-		    if(span)searchInput.value = span.innerText;
-		    for(let each of ul.childNodes){
-		        each.setAttribute("data-hover", "false");
-		    }
-		});
+        searchInput.focus();
+        searchInput.addEventListener("blur", (evt) => {
+            let dom = document.querySelector("#associate-dom");
+            if(dom && dom.getAttribute("data-clear") != 'false')dom.style.display = "none";
+        });
+        searchInput.addEventListener("focus", () => {
+            let ul = document.querySelector("#associate-dom");
+            if(!ul || ul.style.display == "none")return;
+            let span = ul.querySelector("li span");
+            if(span)searchInput.value = span.innerText;
+            for(let each of ul.childNodes){
+                each.setAttribute("data-hover", "false");
+            }
+        });
     }
     startSearch(text){
         this.recordSearch(text)
