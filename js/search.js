@@ -73,6 +73,37 @@ class Search{
         });
     }
     startSearch(text){
+        if(/^(.*=)?[+-]?\d+(\.\d+)?[-+\\*/\\^][+-]?\d+(\.\d+)?$/.test(text)){
+            text = text.replace("++", '+').replace("--", '+').replace("+-", '-').replace("-+", '-');
+            text = text.split("=");
+            text = text[text.length - 1];
+            let numbers = text.match(/[+-]?\d+(\.\d+)?/g);
+            let way = text.match(/\d[-+\\*/\\^]/).toString().charAt(1);
+            let x = parseFloat(numbers[0]);
+            let y = parseFloat(numbers[1]);
+            let answer = 0;
+            console.log(way);
+            console.log(numbers);
+            switch(way){
+                case '+':
+                case '-':
+                    console.log("gogogo");
+                    answer = x + y;
+                    break;
+                case '/':
+                    answer = x / y;
+                    break;
+                case '*':
+                    answer = x * y;
+                    break;
+                case '^':
+                    answer = Math.pow(x, y);
+                    break;
+            }
+            answer = answer.toFixed(2);
+            document.querySelector(".search-input").value = text + '=' + answer;
+            return;
+        }
         this.recordSearch(text)
         let url = this.engine;
         if(/^www\./.test(text)){
