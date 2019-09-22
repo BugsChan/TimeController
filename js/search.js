@@ -82,12 +82,9 @@ class Search{
             let x = parseFloat(numbers[0]);
             let y = parseFloat(numbers[1]);
             let answer = 0;
-            console.log(way);
-            console.log(numbers);
             switch(way){
                 case '+':
                 case '-':
-                    console.log("gogogo");
                     answer = x + y;
                     break;
                 case '/':
@@ -339,6 +336,7 @@ class Search{
                     if(li.style.display == 'none'){
                         li.style.display = 'block';
                         li.innerHTML = each.replace(value, '<span style="font-weight:bold;">'+value.source + '</span>');
+                        li.setAttribute("data-hover", 'false')
                         putted = true;
                         break;
                     }
