@@ -103,7 +103,7 @@ input[type="button"]{
 .defaultExit{
     right: 40%;
 }
-.introductionImg .setting{
+.introductionImg img, .introductionImg .label{
     display:block;
     width:18pt;
     height:18pt;

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>书签 - 我的历史记录</title>
+    <link rel="stylesheet" href="css/label.css">
+</head>
+<body>
+    <main>
+        <p class="left">
+            //这边没有时间写
+        </p>
+        <p class="right">
+            <button id="append">添加</button>
+        </p>
+    </main>
+    <footer>
+    </footer>
+    <script type="module">
+        //高度调节
+        const highAdjust = () => {
+            const winHeight = document.documentElement.clientHeight;
+            document.body.style.height = winHeight + "px";
+        };
+        highAdjust();
+
+        const init = () => {
+            //第一步,初始化所有书签
+            let labels = localStorage.getItem("my-label");
+            if(!labels)return;
+            labels = JSON.parse(labels);
+            const right = document.querySelector(".right");
+            const append = document.querySelector("#append");
+            for(let i = 0; i < labels.length; i++){
+                let label = labels[i];
+                let a = document.createElement("a");
+                a.innerHTML = '<img src="label.jpg">' + label['text'];
+                a.title = label['text'];
+                if(label['href'].indexOf("http") < 0)label['href'] = "http://" + label['href'];
+                a.href = label['href'];
+                a.target = '_blank';
+                a.setAttribute("data-num", (i + 1) + '');
+                right.insertBefore(a, append);
+            }
+        };
+
+        init();
+
+        document.querySelector("#append").onclick = () => {
+            let href = prompt("请输入网址:");
+            while(href == null){
+                href = prompt("输入错误,请重新输入网址:");
+            }
+            let des = prompt("请输入书签名字:");
+            while(des == null){
+                des = prompt("输入错误,请重新输入书签名字:");
+            }
+            let labels = localStorage.getItem("my-label");
+            if(!labels)
+                labels = [];
+            else
+                labels = JSON.parse(labels);
+            labels.push({'href':href, 'text':des});
+            localStorage.setItem("my-label", JSON.stringify(labels));
+            const right = document.querySelector(".right");
+            const append = document.querySelector("#append");
+            let a = document.createElement("a");
+            a.innerHTML = '<img src="label.jpg">' + des;
+            a.title = des;
+            a.href = href;
+            a.target = '_blank';
+            a.setAttribute("data-num", labels.length + '');
+            right.insertBefore(a, append);
+        };
+        document.oncontextmenu = (evt) => {
+            evt.preventDefault();
+        };
+
+        document.querySelector(".right").onmouseup = (evt) => {
+            let target = evt.srcElement || evt.target;
+            if( evt.button == 2
+                && (target.tagName.toUpperCase() == 'A'
+                || target.parentNode.tagName.toUpperCase() == 'A')
+                && confirm("你真的要删除TA吗?")){
+                let num = +target.getAttribute("data-num");
+                let arr = JSON.parse(localStorage.getItem("my-label"));
+                arr.splice(num - 1);
+                localStorage.setItem("my-label", JSON.stringify(arr));
+                location.reload();
+            }
+        };
+    </script>
+</body>
+</html>

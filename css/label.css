@@ -1,0 +1,58 @@
+*{
+    margin:0px;
+    pading:0px;
+    background-color:#f5f5f5;
+}
+
+main{
+    display:grid;
+    grid-template-columns:30% 70%;
+}
+main{
+    height:100%;
+}
+main p{
+    height: 100%;
+}
+main .left{
+    border-right: dotted 1px;
+}
+.right a{
+    display: block;
+    height:30pt;
+    width: 23%;
+    margin: 5pt 1%;
+    line-height: 30pt;
+    overflow: hidden;
+}
+.right a img{
+    width: 15pt;
+    height: 15pt;
+    float: left;
+    margin-top: 8pt;
+    margin-left: 1pt;
+    border-radius:2pt;
+}
+.right a{
+    color:black;
+    font-size: 11pt;
+    text-decoration: none;
+    float:left;
+    border-radius: 3pt;
+}
+.right a:hover{
+    background-color:#def;
+}
+
+#append{
+    position: absolute;
+    bottom: 20pt;
+    right: 30pt;
+}
+
+#delete{
+    position: absolute;
+    bottom: 20pt;
+    right: 70pt;
+}
+
