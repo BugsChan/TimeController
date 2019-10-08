@@ -56,3 +56,6 @@ main .left{
     right: 70pt;
 }
 
+button{
+    border: solid 1px;
+}
