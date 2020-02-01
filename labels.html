@@ -84,7 +84,7 @@
                 && confirm("你真的要删除TA吗?")){
                 let num = +target.getAttribute("data-num");
                 let arr = JSON.parse(localStorage.getItem("my-label"));
-                arr.splice(num - 1);
+                arr.splice(num - 1, 1);
                 localStorage.setItem("my-label", JSON.stringify(arr));
                 location.reload();
             }
