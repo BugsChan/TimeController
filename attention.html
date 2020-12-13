@@ -11,7 +11,7 @@
         main{
             width: 100%;
             height: 100%;
-            background:url(background.jpg);
+            background:url(background.png);
             background-size: 100% 100%;
             position: relative;
             z-index: -2;
@@ -41,18 +41,30 @@
 </head>
 <body>
     <main>
-        <h1>你的电脑将于<span>15</span>秒后关机</h1>
+        <h1>请休息<span>{{min}}</span>分<span>{{sec}}</span>秒</h1>
         <div class="hidder"></div>
     </main>
+    <script type="text/javascript" src="js/vue.js"></script>
     <script type="module">
         const winHeight = document.documentElement.clientHeight;
         document.body.style.height = winHeight + "px";
+        var main = new Vue({
+            el: "main",
+            data: {
+                "min": 15,
+                "sec": "00"
+            }
+        });
+        var endTime = new Date().getTime() + 1000 * 60 * 15;
         setInterval(() => {
-            const obj = document.querySelector("h1 span");
-            let tmp = +obj.innerText - 1;
-            if(tmp < 10)
-                tmp = '0' + tmp;
-            obj.innerText = tmp;
+            let nowTime = new Date();
+            let restTime = endTime - nowTime;
+            if(restTime < 0){
+                window.close();
+            }else{
+                main.min = parseInt(restTime / 1000 / 60);
+                main.sec = parseInt(restTime / 1000 % 60);
+            }
         },1000);
     </script>
 </body>
