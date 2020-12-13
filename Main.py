@@ -7,7 +7,7 @@ startTime = time.time()
 def oneMinLoop():
     nowTime = time.time()
     if nowTime - startTime >= 60 * 60:
-        startTime = nowTime
+        startTime = nowTime + 15 * 60
         webbrowser.open("http://127.0.0.1:5768/attention.html")
 
 def start():
