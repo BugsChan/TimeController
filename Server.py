@@ -12,6 +12,15 @@ class  MServer(BaseHTTPRequestHandler):
         types = self.types
         contentType = types['.log']
 
+        if path.path == "/stat":
+            content = str.encode(str(Main.startTime))
+            self.send_response(200)
+            self.send_header('Content-type', contentType)
+            self.end_headers()
+            self.wfile.write(content)
+            self.wfile.close()
+            return
+
         for each in types:
             if path.path.endswith(each):
                 contentType = types[each]

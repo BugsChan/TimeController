@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>休息倒计时</title>
+    <title>运行信息</title>
     <style type="text/css">
         *{
             margin: 0px;
@@ -41,7 +41,7 @@
 </head>
 <body>
     <main>
-        <h1>请休息<span>{{min}}</span>分<span>{{sec}}</span>秒</h1>
+        <h1>将于<span>{{min}}</span>分<span>{{sec}}</span>秒后休息</h1>
         <div class="hidder"></div>
     </main>
     <script type="text/javascript" src="js/vue.js"></script>
@@ -51,17 +51,26 @@
         var main = new Vue({
             el: "main",
             data: {
-                "min": 15,
-                "sec": "00"
+                "min": 0,
+                "sec": 0
             }
         });
-        var endTime = new Date().getTime() + 1000 * 60 * 15;
-        var audio = new Audio("/music/attention.wav");
+        var endTime = null;
+        fetch("/stat").then(function(response){
+            if(response.status == 200){
+                response.text().then(function(txt){
+                    endTime = parseInt(txt) + 60 * 60;
+                    endTime *= 1000;
+                });
+            }else{
+                alert("网络错误");
+            }
+        });
         setInterval(() => {
             let nowTime = new Date();
             let restTime = endTime - nowTime;
-            if(restTime < 0 && restTime > -10 * 1000){
-                audio.play();
+            if(restTime < 0){
+                window.close();
             }else{
                 main.min = parseInt(restTime / 1000 / 60);
                 main.sec = parseInt(restTime / 1000 % 60);

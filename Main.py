@@ -5,6 +5,7 @@ import webbrowser
 startTime = time.time()
 
 def oneMinLoop():
+    global startTime
     nowTime = time.time()
     if nowTime - startTime >= 60 * 60:
         startTime = nowTime + 15 * 60
@@ -12,8 +13,8 @@ def oneMinLoop():
 
 def start():
     while(True):
-        time.sleep(60)
         oneMinLoop()
+        time.sleep(60)
 
 if __name__ == "__main__":
     start()
