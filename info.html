@@ -14,7 +14,6 @@
             background:url(background.png);
             background-size: 100% 100%;
             position: relative;
-            z-index: -2;
         }
         main:before{
             content:"";
@@ -27,7 +26,7 @@
             color:white;
             text-align:center;
             margin-top: 18%;
-            z-index: 300;
+            z-index: 10;
         }
         .hidder{
             position: absolute;
@@ -35,15 +34,26 @@
             height: 100%;
             top: 0px;
             background-color: rgba(0, 0, 0, 0.6);
-            z-index: -1;
+            z-index: 0;
+        }
+        .reset{
+            margin: 15px auto;
+            display: block;
+            width: 60px;
+            height: 35px;
+            font-size: 14px;
+            z-index: 20;
+            position: relative;
         }
     </style>
 </head>
 <body>
     <main>
         <h1>将于<span>{{min}}</span>分<span>{{sec}}</span>秒后休息</h1>
+        <input class="reset" type="button" value="重置" @click="resetTime()">
         <div class="hidder"></div>
     </main>
+
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="module">
         const winHeight = document.documentElement.clientHeight;
@@ -53,6 +63,15 @@
             data: {
                 "min": 0,
                 "sec": 0
+            },
+            methods: {
+                resetTime: function(){
+                    fetch("/resetTime").then(function(res){
+                        if(res.status == 200){
+                            location.reload();
+                        }
+                    });
+                }
             }
         });
         var endTime = null;

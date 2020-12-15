@@ -60,7 +60,7 @@
         setInterval(() => {
             let nowTime = new Date();
             let restTime = endTime - nowTime;
-            if(restTime < 0 && restTime > -10 * 1000){
+            if(restTime < 0 && restTime > -20 * 1000){
                 audio.play();
             }else{
                 main.min = parseInt(restTime / 1000 / 60);

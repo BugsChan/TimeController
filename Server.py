@@ -12,8 +12,8 @@ class  MServer(BaseHTTPRequestHandler):
         types = self.types
         contentType = types['.log']
 
-        if path.path == "/stat":
-            content = str.encode(str(Main.startTime))
+        if path.path.find(".") < 0:
+            content = Handle(path.path)
             self.send_response(200)
             self.send_header('Content-type', contentType)
             self.end_headers()
@@ -38,6 +38,15 @@ class  MServer(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(content)
         self.wfile.close()
+
+def Handle(path):
+    if path == "/stat":
+        return str.encode(str(Main.startTime))
+    elif path == "/resetTime":
+        Main.resetTime()
+        return str.encode("Ok")
+    else:
+        return str.encode("Error")
 
 
 if __name__ == "__main__":
