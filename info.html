@@ -89,7 +89,7 @@
             let nowTime = new Date();
             let restTime = endTime - nowTime;
             if(restTime < 0){
-                window.close();
+                location.reload();
             }else{
                 main.min = parseInt(restTime / 1000 / 60);
                 main.sec = parseInt(restTime / 1000 % 60);
